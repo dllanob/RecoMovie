@@ -1,0 +1,124 @@
+<ul class="collapsible" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header"><i class="material-icons">add</i>Adicionar Usuario</div>
+    <div class="collapsible-body">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="first_name" type="text" ng-model="user.firstname">
+              <label for="first_name">Nombre</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" ng-model="user.lastname">
+              <label for="last_name">Apellidos</label>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="age" type="number" ng-model="user.age">
+              <label for="age">Edad</label>
+            </div>
+            <div class="input-field col s6">
+              <select ng-model="user.genre">
+                <option value="" disabled selected>Seleccionar tu género</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" ng-model="user.email"> 
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <h5 class="genres-title">Elige los géneros de proferencia</h5>
+
+            <p class="col s2">
+              <input type="checkbox" id="Aventura" ng-model="user.gen1"/>
+              <label for="Aventura">Aventura</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Acción" ng-model="user.gen2"/>
+              <label for="Acción">Acción</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Animada" ng-model="user.gen3"/>
+              <label for="Animada">Animada</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Comedia" ng-model="user.gen4"/>
+              <label for="Comedia">Comedia</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="ComediaR" ng-model="user.gen5"/>
+              <label for="ComediaR">Comedia Romantica</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="CienciaF" ng-model="user.gen6"/>
+              <label for="CienciaF">Ciencia Ficción</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Documentales" ng-model="user.gen7"/>
+              <label for="Documentales">Documentales</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Drama" ng-model="user.gen8"/>
+              <label for="Drama">Drama</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Fantasia" ng-model="user.gen9"/>
+              <label for="Fantasia">Fantasía</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Musicales" ng-model="user.gen10"/>
+              <label for="Musicales">Musicales</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Romance" ng-model="user.gen11"/>
+              <label for="Romance">Romance</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Terror" ng-model="user.gen12"/>
+              <label for="Terror">Terror</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Horror" ng-model="user.gen13"/>
+              <label for="Horror">Horror</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Suspenso" ng-model="user.gen14"/>
+              <label for="Suspenso">Suspenso</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Thriller" ng-model="user.gen15"/>
+              <label for="Thriller">Thriller</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Misterio" ng-model="user.gen16"/>
+              <label for="Misterio">Misterio</label>
+            </p>
+            <p class="col s2">
+              <input type="checkbox" id="Crimen" ng-model="user.gen17"/>
+              <label for="Crimen">Crimen</label>
+            </p>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="addUser();"><i class="material-icons right">person_add</i>Agregar Usuario</button>
+        </form>
+      </div>
+    </div>
+  </li>
+</ul>
+<script>
+    $(document).ready(function(){
+      $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+    });
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>

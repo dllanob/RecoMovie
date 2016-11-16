@@ -1,0 +1,55 @@
+<section class="wrap" ng-controller="UserController as user">
+    <section class="header header-users valign-wrapper">
+      <section class="text-cont valign">
+        <h2><i class="material-icons icon">person</i> Users</h2>
+      </section>
+    </section>
+    <section class="main">
+
+      <nav class="search-cont">
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" class="search" type="search" ng-model="searchTextUser.firstName">
+              <label for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+
+      <section class="items-cont">
+
+        <section class="length-info" ng-show="info">
+          <p >Hay un total de <b>{{length}}</b> usuarios en el sistema.<i class="icon material-icons right" ng-click="info=false">close</i></p>
+        </section>
+
+        <div ng-include="'app/components/collapsible/user.html'"></div>
+
+        <ul class="collection">
+            <li class="collection-item avatar" ng-repeat="user in users | filter:searchTextUser">
+              <img ng-src="{{user.genre == 'M' && '../../assets/images/users/default-user.png' || '../../assets/images/users/default-user-f.png'}}" alt="profile-pic" class="circle">
+              <span class="title"><b>{{ user.firstName }} {{ user.lastName }}</b></span>
+              <p><b>Información: </b>{{ user.age }} años | {{ user.genre }} <br>
+                 <b>Preferencia: </b>{{ user.preference }}
+              </p>
+              <a href="reco/{{user.id}}" class="btn secondary-content" ng-click="recoMovie()"><i class="material-icons">grade</i></a>
+            </li>  
+          </ul>
+        </div>        
+      </section>
+    </section>
+
+    <div ng-include="'app/components/btns/movies.html'"></div>
+    <div ng-include="'app/components/btns/users.html'"></div>
+  </section>
+  <script>
+    $(document).ready(function(){
+      $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+    });
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>

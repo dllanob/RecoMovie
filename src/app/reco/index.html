@@ -1,0 +1,48 @@
+<section class="wrap" ng-controller="RecoController as reco">
+    <section class="header header-movies valign-wrapper">
+      <section class="text-cont valign">
+        <img src="../../assets/images/recomovielogo.png" class="logo" alt="logo"><h2 class="title">RecoMovie</h2>
+      </section>
+    </section>
+    <section class="main">
+
+      <section class="items-cont reco-cont">
+
+        <h4 class="title">Aquí estan tus recomendaciones, ¡Disfrutalas!</h4>
+
+
+        <div class="row" >
+          <div class="col s4" ng-repeat="movie in newmovies | filter:searchText | orderBy:'rank':true | limitTo:6">
+              
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="../../assets/images/movies/{{ movie.imgroute }}">
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">{{ movie.name }}<i class="material-icons right">more_vert</i></span>
+                  <p class="card-genre truncate">{{ movie.genres }}</p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{ movie.name }}<i class="icon material-icons right">close</i></span>
+                    <p class="collection-item description">{{ movie.description }}</p><br>
+                    <p class="collection-item"><b>Genero:</b> {{ movie.genres }}</p>
+                    <p class="collection-item"><b>Año:</b> {{ movie.year }}</p>
+                    <p class="collection-item"><b>Duración:</b> {{ movie.duration }} minutos</p>
+                    <p class="collection-item"><b>Director:</b> {{ movie.director }}</p>
+                    <p class="collection-item"><b>Reparto:</b> {{ movie.cast }}</p>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <section class="vatation-cont">
+          <p>Ayúdanos a mejorar nuestro sistema brindandonos tu opinión acerca de las películas que te hemos sugerido. Ha sido esta recomendación de tu agrado?</p>
+          <section class="btn-cont">
+            <a href="/home" class="btn" ng-click="addYes()">Sí</a>
+            <a href="/home" class="btn" ng-click="addNo()">No</a>
+          </section>
+          
+        </section>
+      </section>
+    </section>
+  </section>

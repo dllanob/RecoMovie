@@ -1,0 +1,130 @@
+<section class="wrap">
+    <section class="header header-movies valign-wrapper">
+      <section class="text-cont valign">
+        <img src="../../assets/images/recomovielogo.png" class="logo" alt="logo"><h2 class="title">RecoMovie</h2>
+      </section>
+    </section>
+
+    <section class="main">
+    
+    <div class="row">
+      <div class="col s12 tabs-cont">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#test1">Películas</a></li>
+          <li class="tab col s3"><a href="#test2">Usuarios</a></li>
+          <li class="tab col s3"><a href="#test4">Estadísticas</a></li>
+        </ul>
+      </div>
+
+      <div id="test1" class="col s12 tab-main" ng-controller="MovieController as movie">
+            
+            <nav class="search-cont">
+              <div class="nav-wrapper">
+                <form>
+                  <div class="input-field">
+                    <input id="search" class="search" type="search" ng-model="searchText.name">
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                  </div>
+                </form>
+              </div>
+            </nav>
+
+            <section class="items-cont">
+
+              <section class="length-info" ng-show="info">
+                <p >Hay un total de <b>{{length}}</b> películas para recomendar.<i class="icon material-icons right" ng-click="info=false">close</i></p>
+              </section>
+
+              <div ng-include="'app/components/collapsible/movie.html'"></div>
+
+              <div class="row" >
+                <div class="col s4" ng-repeat="movie in movies | filter:searchText | orderBy:'id':true">
+                    
+                    <div class="card">
+                      <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="../../assets/images/movies/{{ movie.imgroute }}">
+                      </div>
+                      <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">{{ movie.name }}<i class="material-icons right">more_vert</i></span>
+                        <p class="card-genre truncate">{{ movie.genres }}</p>
+                      </div>
+                      <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{ movie.name }}<i class="icon material-icons right">close</i></span>
+                          <p class="collection-item description">{{ movie.description }}</p><br>
+                          <p class="collection-item"><b>Genero:</b> {{ movie.genres }}</p>
+                          <p class="collection-item"><b>Año:</b> {{ movie.year }}</p>
+                          <p class="collection-item"><b>Duración:</b> {{ movie.duration }} minutos</p>
+                          <p class="collection-item"><b>Director:</b> {{ movie.director }}</p>
+                          <p class="collection-item"><b>Reparto:</b> {{ movie.cast }}</p>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+              
+            </section>
+          </section>
+        </section>
+      </div>
+
+      <div id="test2" class="col s12 tab-main" ng-controller="UserController as user">
+
+          <nav class="search-cont">
+            <div class="nav-wrapper">
+              <form>
+                <div class="input-field">
+                  <input id="search" class="search" type="search" ng-model="searchTextUser.firstName">
+                  <label for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+              </form>
+            </div>
+          </nav>
+
+          <section class="items-cont">
+
+            <section class="length-info" ng-show="info">
+              <p >Hay un total de <b>{{length}}</b> usuarios en el sistema.<i class="icon material-icons right" ng-click="info=false">close</i></p>
+            </section>
+
+            <div ng-include="'app/components/collapsible/user.html'"></div>
+
+            <ul class="collection">
+                <li class="collection-item avatar" ng-repeat="user in users | filter:searchTextUser">
+                  <img ng-src="{{user.genre == 'M' && '../../assets/images/users/default-user.png' || '../../assets/images/users/default-user-f.png'}}" alt="profile-pic" class="circle">
+                  <span class="title"><b>{{ user.firstName }} {{ user.lastName }}</b></span>
+                  <p><b>Información: </b>{{ user.age }} años | {{ user.genre }} <br>
+                     <b>Preferencia: <br></b>{{ user.preference }}
+                  </p>
+                  <a href="reco/{{user.id}}" class="btn secondary-content"><i class="material-icons">grade</i></a>
+                </li>  
+            </ul>       
+          </section>
+      </div>
+      <div id="test4" class="col s12 tab-main tab-stats">
+        <h4 class="title">Estas son nuestras estadísticas.</h4>
+        <section class="card stat-main">
+
+            <p>El siguiente gráfico nos permite ver la valoración que ha tenido el Sistema de Recomendación para los usuarios. Dicha valoración se obtiene inmediatamente después de que se realiza la recomendación.</p>
+            <section class="chart-cont">
+              <canvas id="myChart" width="100" height="100"></canvas>
+            </section>
+            
+        </section>
+        
+      </div>
+    </div>
+
+      
+  <script>
+    $(document).ready(function(){
+      $('ul.tabs').tabs();
+      $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+      });
+    });
+  </script>
+  <script>
+    
+  </script>
